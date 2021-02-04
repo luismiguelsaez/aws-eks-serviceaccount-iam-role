@@ -113,6 +113,8 @@ cat << EOF > k8s/service-account.yml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
+  name: test
+  namespace: default
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::${AWS_ACCOUNT_ID}:role/test-oidc
 EOF
@@ -122,5 +124,5 @@ kubectl apply -f k8s/service-account.yml
 ```
 ### Create pod with service account attached
 ```
-
+kubectl run oidc-test -n default -it --rm=true --image=amazon/aws-cli --serviceaccount=test s3 ls s3://test-oidc-20210202
 ```
