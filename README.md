@@ -113,7 +113,7 @@ cat << EOF > k8s/service-account.yml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: test
+  name: test-oidc
   namespace: default
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::${AWS_ACCOUNT_ID}:role/test-oidc
